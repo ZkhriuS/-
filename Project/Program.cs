@@ -25,8 +25,9 @@ void FillArray(string[] array)
     }
 }
 
-void PrintArray(string[] array)
+void PrintArray(string[] array, string message)
 {
+    System.Console.WriteLine(message);
     for (int i = 0; i < array.Length; i++)
     {
         System.Console.WriteLine($"\t{array[i]}");
@@ -38,10 +39,10 @@ void PrintArray(string[] array)
 
 string[] FilterArray(string[] array)
 {
-    int counter = 0;
+    int counter = 0, filterLength = 3;
     for (int i = 0; i < array.Length; i++)
     {
-        if (array[i].Length <= 3)
+        if (array[i].Length <= filterLength)
         {
             counter++;
         }
@@ -49,7 +50,7 @@ string[] FilterArray(string[] array)
     string[] resultArray = new string[counter];
     for (int i = 0; i < array.Length; i++)
     {
-        if (array[i].Length <= 3)
+        if (array[i].Length <= filterLength)
         {
             resultArray[resultArray.Length - counter] = array[i];
             counter--;
@@ -60,8 +61,6 @@ string[] FilterArray(string[] array)
 
 string[] sourceArray = CreateArray();
 FillArray(sourceArray);
-System.Console.WriteLine("Source array:");
-PrintArray(sourceArray);
-System.Console.WriteLine("Result array:");
-PrintArray(FilterArray(sourceArray));
+PrintArray(sourceArray, "Source array:");
+PrintArray(FilterArray(sourceArray), "Result array:");
 
